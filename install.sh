@@ -3,7 +3,7 @@
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install libaio1 mysql-server alien curl git libmysqlclient-dev
+sudo apt install libaio1 mysql-server alien curl git libmysqlclient-dev -y
 git clone https://github.com/wrekatlanta/wrektranet.git
 cd wrektranet
 wget 'https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm'
