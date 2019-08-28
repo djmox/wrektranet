@@ -36,10 +36,6 @@ bundle install
 cp config/application.example.yml config/application.yml
 cp config/database.example.yml config/database.yml
 
-cd db
-rm schema.rb
-wget https://raw.githubusercontent.com/djmox/wrektranet/master/db/schema.rb
-
 bundle exec rake db:create:all
 bundle exec rake db:schema:load
 bundle exec rake db:test:prepare
