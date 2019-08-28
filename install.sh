@@ -4,8 +4,7 @@ sudo apt update
 sudo apt upgrade -y
 
 sudo apt install libaio1 mysql-server alien curl git libmysqlclient-dev -y
-git clone https://github.com/wrekatlanta/wrektranet.git
-cd wrektranet
+
 wget 'https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm'
 wget 'https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm'
 sudo alien -i oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm
@@ -22,14 +21,15 @@ sudo chmod o+r /etc/profile.d/oracle.sh
 sudo ln -s /usr/include/oracle/$ORACLE_CLIENT_VERSION/client64 /usr/lib/oracle/$ORACLE_CLIENT_VERSION/client64/include
 source /etc/profile.d/oracle.sh
 
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+gpg2 --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable --ruby
-source ~/.rvm/scripts/rvm
+source /home/$USER/.rvm/scripts/rvm
 
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt install nodejs -y
 
 rvm install ruby-2.0.0-p247
+rvm --default use 2.0.0-p247
 gem install bundler -v 1.17.3
 bundle install
 
@@ -40,4 +40,3 @@ bundle exec rake db:create:all
 bundle exec rake db:schema:load
 bundle exec rake db:test:prepare
 bundle exec rake db:seed
-
